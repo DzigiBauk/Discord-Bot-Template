@@ -1,0 +1,27 @@
+{
+  "name": "discordbot",
+  "version": "0.0.1",
+  "description": "Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "compile": "echo oof"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DzigiBauk/DiscordBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DzigiBauk/DiscordBot/issues"
+  },
+  "homepage": "https://github.com/DzigiBauk/DiscordBot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^1.6.3",
+    "discord.js": "^14.11.0",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.5"
+  }
+}
