@@ -38,8 +38,15 @@ client.on("interactionCreate", async (interaction: Discord.Interaction) => {
         //If command does not exist, return
         if (!command) return;
 
-        //Do command logic
-        command.execute(interaction);
+        try {
+            //Do command logic
+            command.execute(interaction);
+        }
+
+        catch {
+            console.log("Something went wrong!");
+        }
+        
     }
 
     //On button interaction

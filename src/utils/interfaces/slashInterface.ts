@@ -1,7 +1,7 @@
-import Discord from 'discord.js'
+import Discord from 'discord.js';
 import { SlashCommandBuilder } from "discord.js";
 
 export interface ISlash {
     data: any;
-    execute(interaction: Discord.Interaction): void;
+    execute(interaction: Discord.Interaction): Promise<void>;
 }
