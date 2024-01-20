@@ -1,10 +1,10 @@
-const config = require('../config.json')
 const fs = require('node:fs');
 
 import Discord from 'discord.js';
 import { ISlash } from './utils/interfaces/slashInterface';
 import { deployCommands } from './utils/commandDeployer';
 import { IButton } from './utils/interfaces/buttonInterface';
+import { ConfigHandler } from './utils/ConfigHandler';
 
 
 //Client + Flags
@@ -25,6 +25,9 @@ let buttons = new Discord.Collection();
 
 //Bot Startup
 client.on("ready", () => {
+    //Deploy the commands to Discord
+    deployCommands(commands);
+
     if (client.user?.username) console.log(`${client.user.username} is up!`);
 })
 
@@ -116,8 +119,9 @@ function buttonLoader(path: string) {
     }
 }
 
-//Deploy the commands to Discord
-deployCommands(commands);
+export { client }
+
+
 
 //Bot Login
-client.login(config.token);
+client.login(ConfigHandler.getToken());

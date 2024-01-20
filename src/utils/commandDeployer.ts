@@ -1,9 +1,8 @@
-const fs = require('node:fs');
-const config = require('../../config.json')
-
 import Discord, { Collection, SlashCommandBuilder } from 'discord.js'
 import { ISlash } from './interfaces/slashInterface';
 import {REST} from 'discord.js'
+import { ConfigHandler } from './ConfigHandler';
+import { client } from '..';
 
 const path = 'slash';
 let commands: Array<Discord.RESTPostAPIChatInputApplicationCommandsJSONBody> = [];
@@ -16,12 +15,12 @@ export async function deployCommands(commands: Discord.Collection<unknown, unkno
         list.push(kom.data.toJSON());
     });
 
-    const rest = new REST().setToken(config.token);
+    const rest = new REST().setToken(ConfigHandler.getToken());
 
     console.log(`Started refreshing ${commands.size} application (/) commands.`);
 
     const data = await rest.put(
-        Discord.Routes.applicationCommands(config.client_id),
+        Discord.Routes.applicationCommands(client.user.id),
         { body: list },
     );
 
