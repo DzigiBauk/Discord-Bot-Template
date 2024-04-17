@@ -43,7 +43,7 @@ client.on("interactionCreate", async (interaction: Discord.Interaction) => {
 
         try {
             //Do command logic
-            command.execute(interaction);
+            await command.execute(interaction);
         }
 
         catch {
@@ -61,7 +61,13 @@ client.on("interactionCreate", async (interaction: Discord.Interaction) => {
         if(!button) return;
 
         //Do button logic
-        button.execute(interaction);
+        try {
+            button.execute(interaction);
+        }
+
+        catch {
+            console.log("Something went wrong!");
+        }
     } 
 
     
